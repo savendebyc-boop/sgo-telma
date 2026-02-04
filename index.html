@@ -63,6 +63,62 @@
             font-size: 14px;
         }
 
+        .auth-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-gosuslugi {
+            background: #0d4cd3;
+            color: white;
+        }
+
+        .btn-gosuslugi:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: var(--tg-theme-secondary-bg-color, #e0e0e0);
+        }
+
+        .divider span {
+            background: var(--tg-theme-bg-color, #fff);
+            padding: 0 16px;
+            position: relative;
+            color: var(--tg-theme-hint-color, #999);
+            font-size: 14px;
+        }
+
         .form-group {
             margin-bottom: 16px;
         }
@@ -92,17 +148,6 @@
             background: var(--tg-theme-bg-color, #fff);
         }
 
-        .btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
         .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -130,6 +175,20 @@
         }
 
         .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .success-message.show {
             display: block;
         }
 
@@ -173,6 +232,17 @@
         .user-details p {
             font-size: 14px;
             opacity: 0.9;
+        }
+
+        .auth-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-top: 4px;
         }
 
         .tabs {
@@ -260,6 +330,34 @@
             gap: 4px;
         }
 
+        /* Статистика */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: var(--tg-theme-bg-color, #fff);
+            border: 1px solid var(--tg-theme-secondary-bg-color, #f0f0f0);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--tg-theme-hint-color, #999);
+        }
+
         /* Расписание */
         .schedule-item {
             display: flex;
@@ -298,65 +396,49 @@
             font-weight: 500;
         }
 
-        /* Статистика */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
+        /* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: var(--tg-theme-bg-color, #fff);
-            border: 1px solid var(--tg-theme-secondary-bg-color, #f0f0f0);
-            border-radius: 16px;
-            padding: 16px;
+            border-top: 1px solid var(--tg-theme-secondary-bg-color, #f0f0f0);
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-item {
+            flex: 1;
             text-align: center;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 13px;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
             color: var(--tg-theme-hint-color, #999);
         }
 
-        /* Loader */
-        .loader {
-            display: none;
-            text-align: center;
-            padding: 40px;
+        .nav-item.active {
+            color: #667eea;
         }
 
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--tg-theme-secondary-bg-color, #f0f0f0);
-            border-top-color: #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .nav-label {
+            font-size: 11px;
         }
 
+        /* Пустое состояние */
         .empty-state {
             text-align: center;
             padding: 40px 20px;
         }
 
         .empty-icon {
-            font-size: 64px;
+            font-size: 48px;
             margin-bottom: 16px;
             opacity: 0.5;
         }
@@ -366,120 +448,102 @@
             font-size: 14px;
         }
 
-        /* Нижняя навигация */
-        .bottom-nav {
+        /* Loader */
+        .loader {
+            display: none;
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
+            bottom: 0;
             background: var(--tg-theme-bg-color, #fff);
-            border-top: 1px solid var(--tg-theme-secondary-bg-color, #f0f0f0);
-            padding: 8px 16px 12px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
+            z-index: 1000;
+            justify-content: center;
             align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 12px;
-            transition: all 0.3s;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .nav-item.active {
-            background: rgba(102, 126, 234, 0.1);
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--tg-theme-secondary-bg-color, #f0f0f0);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        .nav-icon {
-            font-size: 24px;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .nav-label {
-            font-size: 11px;
+        .loader-text {
             color: var(--tg-theme-hint-color, #999);
-        }
-
-        .nav-item.active .nav-label {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .content-wrapper {
-            padding-bottom: 80px;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card, .stat-card {
-            animation: slideIn 0.4s ease-out;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <div class="loader-text" id="loaderText">Загрузка...</div>
+    </div>
+
     <!-- Экран входа -->
-    <div id="loginScreen" class="login-screen">
+    <div class="login-screen" id="loginScreen">
         <div class="logo">
             <div class="logo-icon">🎓</div>
             <h1>Сетевой Город</h1>
             <p>Электронный дневник</p>
         </div>
 
-        <div id="errorMessage" class="error-message"></div>
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
 
-        <form id="loginForm">
+        <!-- Кнопка входа через Госуслуги -->
+        <div class="auth-methods">
+            <button class="btn btn-gosuslugi" onclick="loginWithGosuslugi()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Войти через Госуслуги
+            </button>
+        </div>
+
+        <div class="divider"><span>или</span></div>
+
+        <!-- Форма входа -->
+        <form onsubmit="login(event)">
             <div class="form-group">
                 <label class="form-label">Логин</label>
-                <input type="text" id="username" class="form-input" placeholder="Введите логин" required>
+                <input type="text" class="form-input" id="username" placeholder="Введите логин" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Пароль</label>
-                <input type="password" id="password" class="form-input" placeholder="Введите пароль" required>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Регион</label>
-                <select id="region" class="form-input">
-                    <option value="krd">Краснодарский край (rso23.ru)</option>
-                    <option value="msk">Москва</option>
-                    <option value="spb">Санкт-Петербург</option>
-                    <option value="other">Другой регион</option>
-                </select>
+                <input type="password" class="form-input" id="password" placeholder="Введите пароль" required>
             </div>
 
             <button type="submit" class="btn btn-primary" id="loginBtn">Войти</button>
         </form>
     </div>
 
-    <!-- Загрузчик -->
-    <div id="loader" class="loader">
-        <div class="spinner"></div>
-        <p id="loaderText">Загрузка...</p>
-    </div>
-
     <!-- Главный экран -->
-    <div id="mainScreen" class="main-screen">
+    <div class="main-screen" id="mainScreen">
+        <!-- Заголовок -->
         <div class="header">
             <div class="user-info">
-                <div class="user-avatar">👨‍🎓</div>
+                <div class="user-avatar" id="userAvatar">👤</div>
                 <div class="user-details">
                     <h2 id="userName">Загрузка...</h2>
-                    <p id="userClass">Загрузка...</p>
+                    <p id="userClass">—</p>
+                    <div class="auth-badge" id="authBadge" style="display: none;">
+                        🔐 <span id="authType">СГО</span>
+                    </div>
                 </div>
             </div>
+
             <div class="tabs">
                 <button class="tab active" onclick="switchTab('diary')">Дневник</button>
                 <button class="tab" onclick="switchTab('schedule')">Расписание</button>
@@ -488,49 +552,52 @@
             </div>
         </div>
 
-        <div class="content-wrapper">
-            <div class="container">
-                <!-- Вкладка: Дневник -->
-                <div id="diaryTab" class="tab-content active">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-value" id="avgGrade">-</div>
-                            <div class="stat-label">Средний балл</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="attendance">-</div>
-                            <div class="stat-label">Посещаемость</div>
-                        </div>
+        <!-- Контент вкладок -->
+        <div class="container">
+            <!-- Вкладка "Дневник" -->
+            <div class="tab-content active" id="diaryTab">
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="avgGrade">—</div>
+                        <div class="stat-label">Средний балл</div>
                     </div>
-
-                    <h3 style="margin-bottom: 12px; font-size: 18px;">Последние оценки</h3>
-                    <div id="recentGrades"></div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalGrades">—</div>
+                        <div class="stat-label">Всего оценок</div>
+                    </div>
                 </div>
 
-                <!-- Вкладка: Расписание -->
-                <div id="scheduleTab" class="tab-content">
-                    <h3 style="margin-bottom: 12px; font-size: 18px;">Расписание на сегодня</h3>
-                    <div class="card" id="todaySchedule"></div>
-                </div>
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Последние оценки</h3>
+                <div id="recentGrades"></div>
+            </div>
 
-                <!-- Вкладка: Оценки -->
-                <div id="gradesTab" class="tab-content">
-                    <h3 style="margin-bottom: 12px; font-size: 18px;">Все оценки</h3>
-                    <div id="allGrades"></div>
-                </div>
-
-                <!-- Вкладка: Домашнее задание -->
-                <div id="homeworkTab" class="tab-content">
-                    <h3 style="margin-bottom: 12px; font-size: 18px;">Домашнее задание</h3>
-                    <div id="homeworkList"></div>
+            <!-- Вкладка "Расписание" -->
+            <div class="tab-content" id="scheduleTab">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Расписание на сегодня</h3>
+                <div class="card">
+                    <div id="todaySchedule"></div>
                 </div>
             </div>
+
+            <!-- Вкладка "Оценки" -->
+            <div class="tab-content" id="gradesTab">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Все предметы</h3>
+                <div id="allGrades"></div>
+            </div>
+
+            <!-- Вкладка "Домашнее задание" -->
+            <div class="tab-content" id="homeworkTab">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Актуальные задания</h3>
+                <div id="homeworkList"></div>
+            </div>
         </div>
+
+        <div style="height: 80px;"></div>
 
         <!-- Нижняя навигация -->
         <div class="bottom-nav">
             <div class="nav-item active" onclick="switchTab('diary')">
-                <div class="nav-icon">📖</div>
+                <div class="nav-icon">📊</div>
                 <div class="nav-label">Дневник</div>
             </div>
             <div class="nav-item" onclick="switchTab('schedule')">
@@ -538,7 +605,7 @@
                 <div class="nav-label">Расписание</div>
             </div>
             <div class="nav-item" onclick="switchTab('grades')">
-                <div class="nav-icon">📊</div>
+                <div class="nav-icon">📈</div>
                 <div class="nav-label">Оценки</div>
             </div>
             <div class="nav-item" onclick="logout()">
@@ -549,19 +616,126 @@
     </div>
 
     <script>
-        // Конфигурация
-        const API_URL = 'http://localhost:3000'; // Замените на URL вашего сервера
-        
-        // Инициализация Telegram WebApp
-        let tg = window.Telegram.WebApp;
+        const tg = window.Telegram.WebApp;
+        tg.ready();
         tg.expand();
-        tg.enableClosingConfirmation();
 
-        // Хранилище сессии
+        const API_URL = window.location.origin;
         let sessionId = localStorage.getItem('sessionId');
         let userData = null;
+        let authType = 'sgo'; // 'sgo' или 'esia'
 
-        // Утилиты для API запросов
+        // Проверка параметров URL при загрузке
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionParam = urlParams.get('session');
+            const authParam = urlParams.get('auth');
+            const errorParam = urlParams.get('error');
+
+            if (errorParam) {
+                showError(getErrorMessage(errorParam));
+            }
+
+            if (sessionParam && authParam === 'esia') {
+                // Успешная авторизация через Госуслуги
+                sessionId = sessionParam;
+                authType = 'esia';
+                localStorage.setItem('sessionId', sessionId);
+                localStorage.setItem('authType', 'esia');
+                
+                // Очищаем URL
+                window.history.replaceState({}, document.title, '/');
+                
+                // Загружаем данные
+                initApp();
+            } else if (sessionId) {
+                authType = localStorage.getItem('authType') || 'sgo';
+                initApp();
+            }
+        });
+
+        // Получение текста ошибки
+        function getErrorMessage(error) {
+            const messages = {
+                'missing_params': 'Отсутствуют необходимые параметры авторизации',
+                'invalid_state': 'Недействительный state параметр. Попробуйте войти снова',
+                'auth_failed': 'Ошибка авторизации через Госуслуги. Попробуйте еще раз',
+                'access_denied': 'Вы отказали в доступе к данным'
+            };
+            return messages[error] || 'Произошла ошибка при авторизации';
+        }
+
+        // Вход через Госуслуги
+        async function loginWithGosuslugi() {
+            try {
+                showLoader('Перенаправление на Госуслуги...');
+
+                const telegramUserId = tg.initDataUnsafe?.user?.id || 'unknown';
+                const response = await fetch(`${API_URL}/api/auth/esia/login?telegram_user_id=${telegramUserId}`);
+                const data = await response.json();
+
+                if (data.success && data.authUrl) {
+                    // Перенаправляем пользователя на страницу авторизации Госуслуг
+                    window.location.href = data.authUrl;
+                } else {
+                    hideLoader();
+                    showError('Не удалось инициализировать авторизацию через Госуслуги');
+                }
+            } catch (error) {
+                hideLoader();
+                console.error('Ошибка входа через Госуслуги:', error);
+                showError('Произошла ошибка. Попробуйте позже');
+            }
+        }
+
+        // Вход через логин/пароль
+        async function login(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Вход...';
+            hideError();
+
+            try {
+                const response = await apiRequest('/api/login', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username,
+                        password,
+                        region: 'default'
+                    })
+                });
+
+                if (response.success) {
+                    sessionId = response.sessionId;
+                    authType = response.authType || 'sgo';
+                    localStorage.setItem('sessionId', sessionId);
+                    localStorage.setItem('authType', authType);
+                    
+                    showLoader('Загрузка данных...');
+                    await loadAllData();
+
+                    hideLoader();
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('mainScreen').style.display = 'block';
+                    tg.BackButton.show();
+                } else {
+                    showError(response.error || 'Неверный логин или пароль');
+                }
+            } catch (error) {
+                console.error('Ошибка входа:', error);
+                showError('Не удалось войти в систему. Проверьте данные и попробуйте еще раз');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Войти';
+            }
+        }
+
+        // API запросы
         async function apiRequest(endpoint, options = {}) {
             const headers = {
                 'Content-Type': 'application/json',
@@ -585,138 +759,175 @@
             return response.json();
         }
 
-        // Вход в систему
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            await login();
-        });
-
-        async function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const region = document.getElementById('region').value;
-
-            const loginBtn = document.getElementById('loginBtn');
-            loginBtn.disabled = true;
-            loginBtn.textContent = 'Вход...';
-
+        // Инициализация приложения
+        async function initApp() {
             try {
+                showLoader('Загрузка данных...');
+                await loadAllData();
+                hideLoader();
                 document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('loader').style.display = 'block';
-                document.getElementById('loaderText').textContent = 'Авторизация...';
-
-                const result = await apiRequest('/api/login', {
-                    method: 'POST',
-                    body: JSON.stringify({ username, password, region })
-                });
-
-                if (result.success) {
-                    sessionId = result.sessionId;
-                    userData = result.user;
-                    localStorage.setItem('sessionId', sessionId);
-
-                    document.getElementById('loaderText').textContent = 'Загрузка данных...';
-                    await loadAllData();
-
-                    document.getElementById('loader').style.display = 'none';
-                    document.getElementById('mainScreen').style.display = 'block';
-
-                    tg.showAlert('Добро пожаловать!');
-                    tg.BackButton.show();
-                } else {
-                    throw new Error(result.error || 'Ошибка авторизации');
-                }
+                document.getElementById('mainScreen').style.display = 'block';
+                tg.BackButton.show();
             } catch (error) {
-                console.error('Ошибка входа:', error);
-                document.getElementById('loader').style.display = 'none';
-                document.getElementById('loginScreen').style.display = 'flex';
-                
-                const errorMsg = document.getElementById('errorMessage');
-                errorMsg.textContent = error.message;
-                errorMsg.classList.add('show');
-
-                tg.showAlert('Ошибка: ' + error.message);
-            } finally {
-                loginBtn.disabled = false;
-                loginBtn.textContent = 'Войти';
+                console.error('Ошибка инициализации:', error);
+                localStorage.removeItem('sessionId');
+                localStorage.removeItem('authType');
+                sessionId = null;
+                hideLoader();
+                showError('Не удалось загрузить данные. Войдите заново');
             }
         }
 
         // Загрузка всех данных
         async function loadAllData() {
             try {
-                // Загружаем информацию о пользователе
-                const userInfo = await apiRequest('/api/user');
-                displayUserInfo(userInfo);
-
-                // Загружаем дневник (текущая неделя)
-                const today = new Date();
-                const weekStart = getMonday(today);
-                const weekEnd = new Date(weekStart);
-                weekEnd.setDate(weekEnd.getDate() + 6);
-
-                const diary = await apiRequest(`/api/diary?weekStart=${formatDate(weekStart)}&weekEnd=${formatDate(weekEnd)}`);
-                displayDiary(diary);
-
-                // Загружаем оценки
-                const grades = await apiRequest('/api/grades');
-                displayGrades(grades);
-
-                // Загружаем расписание на сегодня
-                const schedule = await apiRequest(`/api/schedule?date=${formatDate(today)}`);
-                displaySchedule(schedule);
-
-                // Загружаем домашнее задание
-                const homework = await apiRequest(`/api/homework?fromDate=${formatDate(today)}&toDate=${formatDate(new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000))}`);
-                displayHomework(homework);
-
+                // Получаем информацию о пользователе
+                const userEndpoint = authType === 'esia' ? '/api/auth/esia/user' : '/api/user';
+                const userResponse = await apiRequest(userEndpoint);
+                
+                if (authType === 'esia') {
+                    userData = userResponse.user;
+                    displayESIAUserInfo(userData);
+                    
+                    // Для ESIA пока показываем заглушку для данных СГО
+                    showESIAPlaceholder();
+                } else {
+                    userData = userResponse;
+                    displayUserInfo(userData);
+                    
+                    // Получаем дневник, оценки и расписание
+                    await Promise.all([
+                        loadDiary(),
+                        loadGrades(),
+                        loadHomework()
+                    ]);
+                }
             } catch (error) {
-                console.error('Ошибка загрузки данных:', error);
-                tg.showAlert('Ошибка загрузки данных: ' + error.message);
+                throw error;
             }
         }
 
-        // Отображение информации о пользователе
-        function displayUserInfo(userInfo) {
-            if (userInfo.students && userInfo.students.length > 0) {
-                const student = userInfo.students[0];
-                document.getElementById('userName').textContent = student.name || 'Ученик';
-                document.getElementById('userClass').textContent = student.className || 'Класс';
+        // Отображение информации пользователя из ESIA
+        function displayESIAUserInfo(user) {
+            const fullName = `${user.lastName || ''} ${user.firstName || ''} ${user.middleName || ''}`.trim();
+            document.getElementById('userName').textContent = fullName || 'Пользователь';
+            document.getElementById('userClass').textContent = user.email || user.mobile || '';
+            document.getElementById('userAvatar').textContent = (user.firstName?.[0] || '👤').toUpperCase();
+            
+            const authBadge = document.getElementById('authBadge');
+            authBadge.style.display = 'flex';
+            document.getElementById('authType').textContent = 'Госуслуги';
+        }
+
+        // Отображение заглушки для ESIA
+        function showESIAPlaceholder() {
+            const message = `
+                <div class="card" style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">Вы успешно авторизованы!</h3>
+                    <p style="color: var(--tg-theme-hint-color, #999); font-size: 14px; line-height: 1.5;">
+                        Для просмотра дневника необходимо связать аккаунт Госуслуг с учетной записью Сетевого Города.
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('recentGrades').innerHTML = message;
+            document.getElementById('todaySchedule').innerHTML = message;
+            document.getElementById('allGrades').innerHTML = message;
+            document.getElementById('homeworkList').innerHTML = message;
+        }
+
+        // Отображение информации пользователя из СГО
+        function displayUserInfo(data) {
+            const user = data.user || data.accountInfo?.user;
+            if (user) {
+                document.getElementById('userName').textContent = user.name || 'Ученик';
+                const school = data.accountInfo?.organizations?.[0]?.name || '';
+                document.getElementById('userClass').textContent = school;
+                
+                if (user.name) {
+                    const initials = user.name.split(' ').map(n => n[0]).join('');
+                    document.getElementById('userAvatar').textContent = initials;
+                }
+
+                const authBadge = document.getElementById('authBadge');
+                authBadge.style.display = 'flex';
+                document.getElementById('authType').textContent = 'СГО';
             }
         }
 
-        // Отображение дневника
-        function displayDiary(diary) {
+        // Загрузка дневника
+        async function loadDiary() {
+            const monday = getMonday(new Date());
+            const sunday = new Date(monday);
+            sunday.setDate(sunday.getDate() + 6);
+
+            const diary = await apiRequest(
+                `/api/diary?weekStart=${formatDate(monday)}&weekEnd=${formatDate(sunday)}`
+            );
+
+            displayRecentGrades(diary);
+        }
+
+        // Загрузка оценок
+        async function loadGrades() {
+            const grades = await apiRequest('/api/grades');
+            displayGrades(grades);
+        }
+
+        // Загрузка домашнего задания
+        async function loadHomework() {
+            const today = new Date();
+            const nextWeek = new Date(today);
+            nextWeek.setDate(nextWeek.getDate() + 7);
+
+            const homework = await apiRequest(
+                `/api/homework?fromDate=${formatDate(today)}&toDate=${formatDate(nextWeek)}`
+            );
+
+            displayHomework(homework);
+        }
+
+        // Отображение последних оценок
+        function displayRecentGrades(diary) {
             const container = document.getElementById('recentGrades');
             container.innerHTML = '';
 
             if (!diary.weekDays || diary.weekDays.length === 0) {
-                container.innerHTML = '<div class="empty-state"><div class="empty-icon">📚</div><div class="empty-text">Нет данных</div></div>';
+                container.innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-text">Нет оценок</div></div>';
                 return;
             }
 
             const allGrades = [];
+
             diary.weekDays.forEach(day => {
-                day.lessons.forEach(lesson => {
-                    if (lesson.assignments) {
-                        lesson.assignments.forEach(assignment => {
-                            if (assignment.mark) {
-                                allGrades.push({
-                                    subject: lesson.subjectName,
-                                    grade: assignment.mark.mark,
-                                    date: day.date,
-                                    type: assignment.assignmentName,
-                                    teacher: lesson.teacher
-                                });
-                            }
-                        });
-                    }
-                });
+                if (day.lessons) {
+                    day.lessons.forEach(lesson => {
+                        if (lesson.assignments) {
+                            lesson.assignments.forEach(assignment => {
+                                if (assignment.mark && assignment.mark.mark) {
+                                    allGrades.push({
+                                        grade: assignment.mark.mark,
+                                        subject: lesson.subjectName,
+                                        date: day.date,
+                                        type: assignment.assignmentName,
+                                        teacher: lesson.teacher
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
             });
 
             // Сортируем по дате и берем последние 5
             allGrades.sort((a, b) => new Date(b.date) - new Date(a.date));
             const recentGrades = allGrades.slice(0, 5);
+
+            if (recentGrades.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-text">Нет оценок</div></div>';
+                return;
+            }
 
             recentGrades.forEach(grade => {
                 const card = document.createElement('div');
@@ -738,7 +949,11 @@
             if (allGrades.length > 0) {
                 const avg = (allGrades.reduce((sum, g) => sum + parseFloat(g.grade), 0) / allGrades.length).toFixed(1);
                 document.getElementById('avgGrade').textContent = avg;
+                document.getElementById('totalGrades').textContent = allGrades.length;
             }
+
+            // Загружаем расписание
+            displaySchedule(diary);
         }
 
         // Отображение расписания
@@ -757,7 +972,7 @@
                 return dayDate.toDateString() === now.toDateString();
             });
 
-            if (!today || !today.lessons) {
+            if (!today || !today.lessons || today.lessons.length === 0) {
                 container.innerHTML = '<div class="empty-state"><div class="empty-icon">📅</div><div class="empty-text">Нет уроков на сегодня</div></div>';
                 return;
             }
@@ -861,16 +1076,16 @@
             const navItems = document.querySelectorAll('.nav-item');
             
             if (tabName === 'diary') {
-                tabs[0].classList.add('active');
-                navItems[0].classList.add('active');
+                tabs[0]?.classList.add('active');
+                navItems[0]?.classList.add('active');
             } else if (tabName === 'schedule') {
-                tabs[1].classList.add('active');
-                navItems[1].classList.add('active');
+                tabs[1]?.classList.add('active');
+                navItems[1]?.classList.add('active');
             } else if (tabName === 'grades') {
-                tabs[2].classList.add('active');
-                navItems[2].classList.add('active');
+                tabs[2]?.classList.add('active');
+                navItems[2]?.classList.add('active');
             } else if (tabName === 'homework') {
-                tabs[3].classList.add('active');
+                tabs[3]?.classList.add('active');
             }
         }
 
@@ -885,7 +1100,9 @@
                     }
 
                     localStorage.removeItem('sessionId');
+                    localStorage.removeItem('authType');
                     sessionId = null;
+                    authType = 'sgo';
                     userData = null;
 
                     document.getElementById('mainScreen').style.display = 'none';
@@ -915,33 +1132,39 @@
             return date.toLocaleDateString('ru-RU');
         }
 
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').classList.remove('show');
+        }
+
+        function showSuccess(message) {
+            const successEl = document.getElementById('successMessage');
+            successEl.textContent = message;
+            successEl.classList.add('show');
+        }
+
+        function hideSuccess() {
+            document.getElementById('successMessage').classList.remove('show');
+        }
+
+        function showLoader(text = 'Загрузка...') {
+            document.getElementById('loaderText').textContent = text;
+            document.getElementById('loader').style.display = 'flex';
+        }
+
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none';
+        }
+
         // Обработка кнопки "Назад" в Telegram
         tg.BackButton.onClick(() => {
             if (document.getElementById('mainScreen').style.display !== 'none') {
                 logout();
-            }
-        });
-
-        // Проверка существующей сессии при загрузке
-        window.addEventListener('load', async () => {
-            if (sessionId) {
-                try {
-                    document.getElementById('loginScreen').style.display = 'none';
-                    document.getElementById('loader').style.display = 'block';
-                    document.getElementById('loaderText').textContent = 'Восстановление сессии...';
-
-                    await loadAllData();
-
-                    document.getElementById('loader').style.display = 'none';
-                    document.getElementById('mainScreen').style.display = 'block';
-                    tg.BackButton.show();
-                } catch (error) {
-                    console.error('Ошибка восстановления сессии:', error);
-                    localStorage.removeItem('sessionId');
-                    sessionId = null;
-                    document.getElementById('loader').style.display = 'none';
-                    document.getElementById('loginScreen').style.display = 'flex';
-                }
             }
         });
     </script>
