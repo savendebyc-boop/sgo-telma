@@ -1,0 +1,28 @@
+{
+  "name": "sgo-telegram-mini-app",
+  "version": "1.0.0",
+  "description": "Telegram Mini App для Сетевой Город. Образование с полной интеграцией API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "telegram",
+    "mini-app",
+    "sgo",
+    "education",
+    "electronic-diary"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.2",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
